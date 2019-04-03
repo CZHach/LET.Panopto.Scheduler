@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using SessionManagement;
 using RemoteRecorderManagement;
-using EFGetStarted.AspNetCore.ExistingDb.Models;
-using EFGetStarted.AspNetCore.ExistingDb.Utilities;
+using LET.Panopto.Scheduler.Models;
+using LET.Panopto.Scheduler.Utilities;
 
-namespace EFGetStarted.AspNetCore.ExistingDb.Scheduling
+namespace LET.Panopto.Scheduler.Scheduling
 {
     public interface IScheduleCreationInitiator
     {

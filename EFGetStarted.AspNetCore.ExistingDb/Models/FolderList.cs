@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EFGetStarted.AspNetCore.ExistingDb.Models
+namespace LET.Panopto.Scheduler.Models
 {
     public partial class FolderList
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using EFGetStarted.AspNetCore.ExistingDb.Models;
-using EFGetStarted.AspNetCore.ExistingDb.Utilities;
+using LET.Panopto.Scheduler.Models;
+using LET.Panopto.Scheduler.Utilities;
 
-namespace EFGetStarted.AspNetCore.ExistingDb.Scheduling
+namespace LET.Panopto.Scheduler.Scheduling
 {
     public interface IScheduleGenerator
     {

@@ -9,11 +9,11 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using EFGetStarted.AspNetCore.ExistingDb.Models;
+using LET.Panopto.Scheduler.Models;
 using Microsoft.EntityFrameworkCore;
-using EFGetStarted.AspNetCore.ExistingDb.Scheduling;
+using LET.Panopto.Scheduler.Scheduling;
 
-namespace EFGetStarted.AspNetCore.ExistingDb
+namespace LET.Panopto.Scheduler
 {
     public class Startup
     {

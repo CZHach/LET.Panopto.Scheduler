@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using SessionManagement;
 using RemoteRecorderManagement;
 using Microsoft.AspNetCore.Mvc;
-//using EFGetStarted.AspNetCore.ExistingDb.Views.Configuration;
+//using LET.Panopto.Scheduler.Views.Configuration;
 using Microsoft.Extensions.Options;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace EFGetStarted.AspNetCore.ExistingDb.Controllers
+namespace LET.Panopto.Scheduler.Controllers
 {
     public class BaseController : Controller
     {

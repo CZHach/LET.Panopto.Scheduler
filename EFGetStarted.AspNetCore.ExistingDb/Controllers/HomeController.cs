@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using EFGetStarted.AspNetCore.ExistingDb.Models;
+using LET.Panopto.Scheduler.Models;
 
-namespace EFGetStarted.AspNetCore.ExistingDb.Controllers
+namespace LET.Panopto.Scheduler.Controllers
 {
     public class HomeController : Controller
     {

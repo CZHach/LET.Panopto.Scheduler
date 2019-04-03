@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EFGetStarted.AspNetCore.ExistingDb.Models
+namespace LET.Panopto.Scheduler.Models
 {
     public class GroupedEvents
     {

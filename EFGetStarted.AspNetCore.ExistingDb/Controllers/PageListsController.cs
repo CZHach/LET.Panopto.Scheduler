@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EFGetStarted.AspNetCore.ExistingDb.Models;
+using LET.Panopto.Scheduler.Models;
 
-namespace EFGetStarted.AspNetCore.ExistingDb.Controllers
+namespace LET.Panopto.Scheduler.Controllers
 {
     public class PageListsController : Controller
     {

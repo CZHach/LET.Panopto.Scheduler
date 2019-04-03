@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EFGetStarted.AspNetCore.ExistingDb.Scheduling
+namespace LET.Panopto.Scheduler.Scheduling
 {
     public class ResponseGenerator
     {

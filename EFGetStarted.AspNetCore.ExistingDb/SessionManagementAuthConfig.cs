@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EFGetStarted.AspNetCore.ExistingDb
+namespace LET.Panopto.Scheduler
 {
     public class SessionManagementAuthConfig
     {

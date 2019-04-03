@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using SessionManagement;
 using RemoteRecorderManagement;
 using Microsoft.AspNetCore.Mvc;
-using EFGetStarted.AspNetCore.ExistingDb.Models;
-using EFGetStarted.AspNetCore.ExistingDb.Utilities;
-using EFGetStarted.AspNetCore.ExistingDb.Scheduling;
+using LET.Panopto.Scheduler.Models;
+using LET.Panopto.Scheduler.Utilities;
+using LET.Panopto.Scheduler.Scheduling;
 
-namespace EFGetStarted.AspNetCore.ExistingDb.Controllers
+namespace LET.Panopto.Scheduler.Controllers
 {
     public class SchedulingController : Controller
     {

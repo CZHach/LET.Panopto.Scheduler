@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using EFGetStarted.AspNetCore.ExistingDb.Models;
+using LET.Panopto.Scheduler.Models;
 
-namespace EFGetStarted.AspNetCore.ExistingDb.Models
+namespace LET.Panopto.Scheduler.Models
 {
     public partial class NavEventsContext : DbContext
     {
@@ -177,8 +177,8 @@ namespace EFGetStarted.AspNetCore.ExistingDb.Models
             });
         }
 
-        public DbSet<EFGetStarted.AspNetCore.ExistingDb.Models.EventSession> EventSession { get; set; }
+        public DbSet<LET.Panopto.Scheduler.Models.EventSession> EventSession { get; set; }
 
-        public DbSet<EFGetStarted.AspNetCore.ExistingDb.Models.ScheduleBlockResult> ScheduleBlockResult { get; set; }
+        public DbSet<LET.Panopto.Scheduler.Models.ScheduleBlockResult> ScheduleBlockResult { get; set; }
     }
 }

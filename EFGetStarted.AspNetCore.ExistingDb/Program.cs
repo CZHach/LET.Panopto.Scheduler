@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace EFGetStarted.AspNetCore.ExistingDb
+namespace LET.Panopto.Scheduler
 {
     public class Program
     {

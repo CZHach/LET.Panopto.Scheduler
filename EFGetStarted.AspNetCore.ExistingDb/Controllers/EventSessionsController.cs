@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using EFGetStarted.AspNetCore.ExistingDb.Models;
-using EFGetStarted.AspNetCore.ExistingDb.Utilities;
-using EFGetStarted.AspNetCore.ExistingDb.Scheduling;
+using LET.Panopto.Scheduler.Models;
+using LET.Panopto.Scheduler.Utilities;
+using LET.Panopto.Scheduler.Scheduling;
 using Newtonsoft.Json;
 
-namespace EFGetStarted.AspNetCore.ExistingDb.Controllers
+namespace LET.Panopto.Scheduler.Controllers
 {
    
     public class EventSessionsController : Controller

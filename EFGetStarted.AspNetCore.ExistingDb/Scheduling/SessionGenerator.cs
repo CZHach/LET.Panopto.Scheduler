@@ -1,4 +1,4 @@
-﻿using EFGetStarted.AspNetCore.ExistingDb.Models;
+﻿using LET.Panopto.Scheduler.Models;
 using RemoteRecorderManagement;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace EFGetStarted.AspNetCore.ExistingDb.Scheduling
+namespace LET.Panopto.Scheduler.Scheduling
 {
     public interface ISessionGenerator
     {
