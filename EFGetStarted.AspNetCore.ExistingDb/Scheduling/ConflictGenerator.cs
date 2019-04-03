@@ -26,7 +26,8 @@ namespace LET.Panopto.Scheduler.Scheduling
                 SessionName = c.SessionName,
                 SessionStart = c.StartTime,
                 SessionEnd = c.EndTime,
-                SessionMessage = "CONFLICT"
+                SessionMessage = "CONFLICT FOUND",
+                ConflictExists = true
             }).ToList();
 
             return recordingResults;

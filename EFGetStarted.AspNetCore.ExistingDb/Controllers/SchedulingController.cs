@@ -56,7 +56,8 @@ namespace LET.Panopto.Scheduler.Controllers
             recordingResults.Add(
                 new ScheduleBlockResult
                 {
-                    SessionMessage = "No Conflicts. Sessions scheduled successfully."
+                    ConflictExists = false,
+                    SessionMessage = "Sessions scheduled successfully"
                 });
 
             return View(recordingResults);
