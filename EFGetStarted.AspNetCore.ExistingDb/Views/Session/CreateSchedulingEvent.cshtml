@@ -1,0 +1,55 @@
+﻿@model EFGetStarted.AspNetCore.ExistingDb.Models.SchedulingEvent
+
+@{
+    ViewData["Title"] = "CreateSchedulingEvent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateSchedulingEvent</h2>
+
+<h4>SchedulingEvent</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateSchedulingEvent">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SessionName" class="control-label"></label>
+                <input asp-for="SessionName" class="form-control" />
+                <span asp-validation-for="SessionName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SessionRecorderId" class="control-label"></label>
+                @*<input asp-for="SessionRecorderId" class="form-control" />*@
+                <select asp-for="SessionRecorderId" class="form-control">
+                    <option selected="selected" value="95cb51ed-a8f5-45ff-925a-a8ef00fa4356">LR2 Recorder</option>
+                    <option value="85e1632d-0b6f-497f-b455-a96501368ed1">LR4 Recorder</option>
+                </select>
+                <span asp-validation-for="SessionRecorderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SessionFolderId" class="control-label"></label>
+                <input asp-for="SessionFolderId" class="form-control" />
+                <span asp-validation-for="SessionFolderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SessionStart" class="control-label"></label>
+                <input asp-for="SessionStart" class="form-control" />
+                <span asp-validation-for="SessionStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SessionEnd" class="control-label"></label>
+                <input asp-for="SessionEnd" class="form-control" />
+                <span asp-validation-for="SessionEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

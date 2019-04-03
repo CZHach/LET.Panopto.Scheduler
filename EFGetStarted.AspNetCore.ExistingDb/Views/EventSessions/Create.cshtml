@@ -1,0 +1,50 @@
+﻿@model EFGetStarted.AspNetCore.ExistingDb.Models.EventSession
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>EventSession</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SessionCourseName" class="control-label"></label>
+                <input asp-for="SessionCourseName" class="form-control" />
+                <span asp-validation-for="SessionCourseName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SessionEventName" class="control-label"></label>
+                <input asp-for="SessionEventName" class="form-control" />
+                <span asp-validation-for="SessionEventName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SessionDate" class="control-label"></label>
+                <input asp-for="SessionDate" class="form-control" />
+                <span asp-validation-for="SessionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SessionStartDateTime" class="control-label"></label>
+                <input asp-for="SessionStartDateTime" class="form-control" />
+                <span asp-validation-for="SessionStartDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SessionEndDateTime" class="control-label"></label>
+                <input asp-for="SessionEndDateTime" class="form-control" />
+                <span asp-validation-for="SessionEndDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

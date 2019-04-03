@@ -1,0 +1,69 @@
+﻿@model EFGetStarted.AspNetCore.ExistingDb.Models.FolderList
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>FolderList</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FolderSequence)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FolderSequence)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FolderDisplayName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FolderDisplayName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FolderDateTimeStart)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FolderDateTimeStart)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Hidden)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Hidden)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowStartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ShowStartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowEndDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ShowEndDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HasCustomAcl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HasCustomAcl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Module)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Module.ModuleDisplayName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="FolderId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

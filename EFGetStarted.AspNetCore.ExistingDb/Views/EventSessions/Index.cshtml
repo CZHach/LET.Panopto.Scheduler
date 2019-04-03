@@ -1,0 +1,71 @@
+﻿@model List<EFGetStarted.AspNetCore.ExistingDb.Models.GroupedEvents>
+
+@{
+    ViewData["Title"] = "CreateSchedulingEvent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="padding-top: 10px; padding-bottom: 20px;">
+    <span style="font-size: 26px;">| Weekly Events |  </span> <span style="font-size: 16px">@ViewData["RangeStart"] - @ViewData["RangeEnd"]</span>
+</div>
+
+<form asp-controller="EventSessions" asp-action="SearchByDate" method="post">
+    <fieldset>
+        <div class="datePickers" style="display: block; float: left;">
+            <div class="startDate" style="float: left;">
+                Start Date
+                <input id="inputStartDate" type="date" asp-format="{0:yyyy-MM-dd}" name="start" asp-for="@ViewData["RangeStart"]" />
+            </div>
+            <div class="endDate" style="float: right;">
+                End Date
+                <input id="inputEndDate" type="date" asp-format="{0:yyyy-MM-dd}" name="end" asp-for="@ViewData["RangeEnd"]" />
+                <button formaction="/EventSessions/SearchByDate/">Go</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Course ID
+            </th>
+            <th>
+                Course Name
+            </th>
+            <th>
+                Event Name
+            </th>
+            <th>
+                Event Date
+            </th>
+            <th>
+                Event Duration
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventCourseId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventCourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventName)
+                </td>
+                <td>
+                    @item.EventRecordDate.Value.ToLongDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventPlayDuration)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

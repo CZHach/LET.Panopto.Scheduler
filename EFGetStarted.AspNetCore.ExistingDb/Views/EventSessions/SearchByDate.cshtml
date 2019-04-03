@@ -1,0 +1,64 @@
+﻿
+@model List<EFGetStarted.AspNetCore.ExistingDb.Models.GroupedEvents>
+
+@{
+    ViewData["Title"] = "CreateSchedulingEvent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="padding-top: 10px; padding-bottom: 20px;">
+    <span style="font-size: 26px;">| Weekly Events |  </span> <span style="font-size: 16px">@ViewData["RangeStart"] - @ViewData["RangeEnd"]</span>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Course ID
+            </th>
+            <th>
+                Course Name
+            </th>
+            <th>
+                Event Name
+            </th>
+            <th>
+                Event Date
+            </th>
+            <th>
+                Event Duration
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventCourseId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventCourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventName)
+                </td>
+                <td>
+                    @item.EventRecordDate.Value.ToLongDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventPlayDuration)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<form asp-controller="Scheduling" asp-action="ScheduleBlock" method="post">
+    <fieldset>
+        <input type="hidden" name="start" asp-for="@ViewData["RangeStart"]" />
+        <input type="hidden" name="end" asp-for="@ViewData["RangeEnd"]" />
+        <button formaction="/Scheduling/ScheduleBlock/">Schedule Recordings</button>
+    </fieldset>
+</form>

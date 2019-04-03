@@ -1,0 +1,52 @@
+﻿@model IEnumerable<EFGetStarted.AspNetCore.ExistingDb.Models.ModuleList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ModuleId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModuleDisplayName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MediasiteCatalogId)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModuleId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModuleDisplayName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AcademicYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MediasiteCatalogId)
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ModuleId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ModuleId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ModuleId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

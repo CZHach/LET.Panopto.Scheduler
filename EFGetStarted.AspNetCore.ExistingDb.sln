@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFGetStarted.AspNetCore.ExistingDb", "EFGetStarted.AspNetCore.ExistingDb\EFGetStarted.AspNetCore.ExistingDb.csproj", "{482FDE16-9A08-436D-B261-773AD78BA8B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{482FDE16-9A08-436D-B261-773AD78BA8B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{482FDE16-9A08-436D-B261-773AD78BA8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{482FDE16-9A08-436D-B261-773AD78BA8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{482FDE16-9A08-436D-B261-773AD78BA8B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F09756D4-7D22-4F7F-BA2A-F9095FA391D7}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<EFGetStarted.AspNetCore.ExistingDb.Models.FolderList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Module.ModuleDisplayName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FolderDisplayName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FolderDateTimeStart)
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Hidden)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShowStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShowEndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HasCustomAcl)
+        </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Module)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+            @Html.DisplayFor(modelItem => item.Module.ModuleDisplayName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FolderDisplayName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FolderDateTimeStart)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Hidden)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShowStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShowEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HasCustomAcl)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Module.ModuleDisplayName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FolderId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FolderId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FolderId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<EFGetStarted.AspNetCore.ExistingDb.Models.ScheduleBlockResult>
+
+@{
+    ViewData["Title"] = "CreateSchedulingEvent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+
+    <div style="padding-top: 10px; padding-bottom: 20px;">
+        <span style="font-size: 26px; color: red; font-weight: bolder;">*** OMG Session Conflict ! ! ! :(  </span>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SessionID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SessionName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SessionStart)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SessionEnd)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SessionMessage)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SessionID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SessionName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SessionStart)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SessionEnd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SessionMessage)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

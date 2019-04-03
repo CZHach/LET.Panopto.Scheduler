@@ -1,0 +1,113 @@
+﻿@model EFGetStarted.AspNetCore.ExistingDb.Models.PageList
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>PageList</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FolderId" class="control-label"></label>
+                <select asp-for="FolderId" class="form-control" asp-items="ViewBag.FolderId"></select>
+                <span asp-validation-for="FolderId" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="PageId" />
+            <div class="form-group">
+                <label asp-for="PageDisplayName" class="control-label"></label>
+                <input asp-for="PageDisplayName" class="form-control" />
+                <span asp-validation-for="PageDisplayName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PageSequence" class="control-label"></label>
+                <input asp-for="PageSequence" class="form-control" />
+                <span asp-validation-for="PageSequence" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PageStartTime" class="control-label"></label>
+                <input asp-for="PageStartTime" class="form-control" />
+                <span asp-validation-for="PageStartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PageEndTime" class="control-label"></label>
+                <input asp-for="PageEndTime" class="form-control" />
+                <span asp-validation-for="PageEndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Hidden" /> @Html.DisplayNameFor(model => model.Hidden)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateUpdated" class="control-label"></label>
+                <input asp-for="DateUpdated" class="form-control" />
+                <span asp-validation-for="DateUpdated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShowStartDate" class="control-label"></label>
+                <input asp-for="ShowStartDate" class="form-control" />
+                <span asp-validation-for="ShowStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShowEndDate" class="control-label"></label>
+                <input asp-for="ShowEndDate" class="form-control" />
+                <span asp-validation-for="ShowEndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PageKeywords" class="control-label"></label>
+                <input asp-for="PageKeywords" class="form-control" />
+                <span asp-validation-for="PageKeywords" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BodyContent" class="control-label"></label>
+                <input asp-for="BodyContent" class="form-control" />
+                <span asp-validation-for="BodyContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LinkLibraryId" class="control-label"></label>
+                <input asp-for="LinkLibraryId" class="form-control" />
+                <span asp-validation-for="LinkLibraryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PageTypeId" class="control-label"></label>
+                <input asp-for="PageTypeId" class="form-control" />
+                <span asp-validation-for="PageTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="HasCustomAcl" /> @Html.DisplayNameFor(model => model.HasCustomAcl)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="ObjectiveId" class="control-label"></label>
+                <input asp-for="ObjectiveId" class="form-control" />
+                <span asp-validation-for="ObjectiveId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

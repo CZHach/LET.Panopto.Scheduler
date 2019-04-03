@@ -1,0 +1,117 @@
+﻿@model EFGetStarted.AspNetCore.ExistingDb.Models.PageList
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PageList</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PageDisplayName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PageDisplayName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PageSequence)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PageSequence)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PageStartTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PageStartTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PageEndTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PageEndTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Hidden)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Hidden)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateUpdated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateUpdated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowStartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ShowStartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowEndDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ShowEndDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PageKeywords)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PageKeywords)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BodyContent)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BodyContent)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkLibraryId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LinkLibraryId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PageTypeId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PageTypeId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HasCustomAcl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HasCustomAcl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ObjectiveId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ObjectiveId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Folder)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Folder.FolderId)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="PageId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
