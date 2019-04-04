@@ -40,9 +40,19 @@ namespace LET.Panopto.Scheduler.Scheduling
                 .Where(f => f.FolderDateTimeStart >= start
                 && f.FolderDateTimeStart <= end).ToListAsync();
 
+            var classYear = await _context.Groups
+                .Where(c => c.ClassYear > DateTime.Now.Year - 2).ToListAsync();
+
+            //dataSource.StateList.Where(s => countryCodes.Contains(s.CountryCode))
+
+            var moduleCurricula = await _context.ModuleCurricula.ToListAsync();
+
+
             var queryToEventSession = from pl in eventPages
                 join fl in eventFolders on pl.FolderId equals fl.FolderId
                 join ml in eventCourses on fl.ModuleId equals ml.ModuleId
+                join mc in moduleCurricula on ml.ModuleId equals mc.ModuleId
+                join cy in classYear on mc.GroupId equals cy.GroupId
                 select new EventSession
                 {
                     Id = pl.PageId,

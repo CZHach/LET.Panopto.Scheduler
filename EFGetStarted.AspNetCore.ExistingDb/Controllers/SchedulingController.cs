@@ -14,10 +14,10 @@ namespace LET.Panopto.Scheduler.Controllers
     public class SchedulingController : Controller
     {
         private readonly NavEventsContext _context;
-        public IScheduleCreationInitiator ScheduleCreationInitiator { get; }
-        public IScheduleGenerator ScheduleGenerator { get; }
-        public IConflictGenerator ConflictGenerator { get;  }
-        public ISessionGenerator SessionGenerator { get; }
+        private IScheduleCreationInitiator ScheduleCreationInitiator { get; }
+        private IScheduleGenerator ScheduleGenerator { get; }
+        private IConflictGenerator ConflictGenerator { get;  }
+        private ISessionGenerator SessionGenerator { get; }
 
         public SchedulingController(
                 NavEventsContext context,
