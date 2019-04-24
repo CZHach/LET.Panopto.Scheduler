@@ -26,7 +26,8 @@ namespace LET.Panopto.Scheduler.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=localhost;Database=NavEvents;Integrated Security=true");
+                //var connection = @"Server=136.142.96.135;Database=Navigator;Integrated Security=true;ConnectRetryCount=0;User Id=NavReadWrite;Password=l%]k.5Ev85u";
+                optionsBuilder.UseSqlServer("Server=136.142.96.135;Database=Navigator;Integrated Security=true;ConnectRetryCount=0;User Id=NavReadWrite;Password=l%]k.5Ev85u");
             }
         }
 
@@ -68,6 +69,8 @@ namespace LET.Panopto.Scheduler.Models
                     .WithMany(p => p.FolderList)
                     .HasForeignKey(d => d.ModuleId)
                     .HasConstraintName("fk_moduleList_folderList_moduleID");
+
+                entity.HasQueryFilter(f => f.FolderDateTimeStart != null);
             });
 
             modelBuilder.Entity<ModuleList>(entity =>
@@ -94,6 +97,9 @@ namespace LET.Panopto.Scheduler.Models
                     .HasColumnName("moduleDisplayName")
                     .HasMaxLength(255);
 
+                entity.HasQueryFilter(m => m.MediasiteCatalogId != null);
+                entity.HasQueryFilter(m => m.PublishingStatus == 1);
+
             });
 
             modelBuilder.Entity<Groups>(entity =>
@@ -101,8 +107,13 @@ namespace LET.Panopto.Scheduler.Models
                 entity.HasKey(e => e.GroupId);
                 entity.ToTable("groups");
                 entity.Property(e => e.GroupId).HasColumnName("groupID");
-                entity.Property(e => e.Discriminator).HasColumnName("discriminator");
+                entity.Property(e => e.Discriminator)
+                .IsRequired()
+                .HasColumnName("discriminator");
+                entity.Property(e => e.Title).HasColumnName("title");
                 entity.Property(e => e.ClassYear).HasColumnName("classYear");
+                entity.HasQueryFilter(e => e.Discriminator == 'C');
+                entity.HasQueryFilter(e => e.ClassYear != null);
             });
 
             modelBuilder.Entity<ModuleCurricula>(entity =>
@@ -112,6 +123,7 @@ namespace LET.Panopto.Scheduler.Models
                 entity.ToTable("moduleCurricula");
                 entity.Property(e => e.ModuleId).HasColumnName("moduleId");
                 entity.Property(e => e.GroupId).HasColumnName("groupId");
+                entity.HasQueryFilter(e => e.GroupId > 1003574);
             });
 
             modelBuilder.Entity<PageList>(entity =>
@@ -174,6 +186,12 @@ namespace LET.Panopto.Scheduler.Models
                     .HasForeignKey(d => d.FolderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_pageList_folderList");
+
+                entity.HasQueryFilter(p => p.PageTypeId == 668);
+                entity.HasQueryFilter(p => p.PageStartTime != null);
+                entity.HasQueryFilter(p => p.PageEndTime != null);
+                entity.HasQueryFilter(p => p.DateCreated != null);
+
             });
         }
 

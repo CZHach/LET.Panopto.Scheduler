@@ -10,6 +10,6 @@ namespace LET.Panopto.Scheduler.Models
         public int GroupId { get; set; }
         public char Discriminator { get; set; }
         public string Title { get; set; }
-        public int ClassYear { get; set; }
+        public int? ClassYear { get; set; }
     }
 }

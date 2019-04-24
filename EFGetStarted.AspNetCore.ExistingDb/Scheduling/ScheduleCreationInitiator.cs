@@ -36,15 +36,14 @@ namespace LET.Panopto.Scheduler.Scheduling
 
             List<RecorderSettings> recorderSettings = new List<RecorderSettings>
             {
-                new RecorderSettings { RecorderId = remoteRecorderId }
+                new RecorderSettings { RecorderId = schedulingEvent.SessionRecorderId }
             };
 
             // auth, sesson.Name, session.FolderId, session.IsBroadcast, session.start, session.end, recorderSettings // 
             scheduleResult = await recorderClient.ScheduleRecordingAsync(
                 recorderManagementAuth,
                 schedulingEvent.SessionName,
-                panoptoFolderId,
-                //schedulingEvent.SessionFolderId,
+                schedulingEvent.SessionCatalogId,
                 false,
                 schedulingEvent.SessionStart.ToUniversalTime(),
                 schedulingEvent.SessionEnd.ToUniversalTime(),

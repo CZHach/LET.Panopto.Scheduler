@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using LET.Panopto.Scheduler.Models;
 using Microsoft.EntityFrameworkCore;
 using LET.Panopto.Scheduler.Scheduling;
+using Microsoft.Extensions.Logging;
 
 namespace LET.Panopto.Scheduler
 {
@@ -27,6 +28,7 @@ namespace LET.Panopto.Scheduler
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //DI for Panopto services
             //session management
             services.Configure<SessionManagementAuthConfig>(Configuration.GetSection("PanoptoSessionManager"));
@@ -49,9 +51,9 @@ namespace LET.Panopto.Scheduler
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            var connection = @"Server=136.142.96.135;Database=Navigator;Integrated Security=true;ConnectRetryCount=0;User Id=NavReadWrite;Password=l%]k.5Ev85u";
+            var connection = @"Server=136.142.96.135;Database=Navigator;ConnectRetryCount=0;User Id=NavReadWrite;Password=l%]k.5Ev85u";
             services.AddDbContext<NavEventsContext>(options => options.UseSqlServer(connection));
         }
 
@@ -67,6 +69,8 @@ namespace LET.Panopto.Scheduler
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+            app.UseDeveloperExceptionPage();
+            app.UseDatabaseErrorPage();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

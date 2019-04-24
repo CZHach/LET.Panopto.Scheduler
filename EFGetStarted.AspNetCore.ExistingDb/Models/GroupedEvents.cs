@@ -9,6 +9,7 @@ namespace LET.Panopto.Scheduler.Models
     {
         public string EventCourseId { get; set; }
         public string EventCourseName { get; set; }
+        public int ClassYear { get; set; }
         public DateTime? EventRecordDate { get; set; }
         public string EventName { get; set; }
         public string EventPlayDuration { get; set; }

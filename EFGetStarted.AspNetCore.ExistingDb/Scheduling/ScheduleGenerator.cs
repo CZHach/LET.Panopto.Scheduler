@@ -24,6 +24,14 @@ namespace LET.Panopto.Scheduler.Scheduling
 
         public async Task<List<GroupedEvents>>  GenerateWeeklySchedule(DateTime? start, DateTime? end)
         {
+
+            int firstYearClass = DateTime.Now.Year + 3;
+            int secondYearClass = DateTime.Now.Year + 2;
+
+            Guid lr4Recorder = new Guid("85e1632d-0b6f-497f-b455-a96501368ed1");
+            Guid lr2Recorder = new Guid("95cb51ed-a8f5-45ff-925a-a8ef00fa4356");
+
+
             var eventCourses = await _context.ModuleList
                          .Where(m => m.MediasiteCatalogId != null
                                  && m.PublishingStatus == 1
@@ -41,23 +49,30 @@ namespace LET.Panopto.Scheduler.Scheduling
                 && f.FolderDateTimeStart <= end).ToListAsync();
 
             var classYear = await _context.Groups
-                .Where(c => c.ClassYear > DateTime.Now.Year - 2).ToListAsync();
-
-            //dataSource.StateList.Where(s => countryCodes.Contains(s.CountryCode))
+                .Where(c => c.Discriminator == 'C').ToListAsync();
 
             var moduleCurricula = await _context.ModuleCurricula.ToListAsync();
 
+            var firstYears = (from mc in _context.ModuleCurricula
+                              join cy in _context.Groups on mc.GroupId equals cy.GroupId
+                             where cy.ClassYear == firstYearClass
+                              select mc.ModuleId).ToList();
+
+            var secondYears = (from mc in _context.ModuleCurricula
+                               join cy in _context.Groups on mc.GroupId equals cy.GroupId
+                              where cy.ClassYear == secondYearClass
+                               select mc.ModuleId).ToList();
 
             var queryToEventSession = from pl in eventPages
                 join fl in eventFolders on pl.FolderId equals fl.FolderId
                 join ml in eventCourses on fl.ModuleId equals ml.ModuleId
-                join mc in moduleCurricula on ml.ModuleId equals mc.ModuleId
-                join cy in classYear on mc.GroupId equals cy.GroupId
                 select new EventSession
                 {
                     Id = pl.PageId,
                     CourseId = ml.ModuleId,
                     SessionCourseName = ml.ModuleDisplayName,
+                    ClassYear = firstYears.Contains(ml.ModuleId) ? 2022 : 2021,
+                    RecorderId = firstYears.Contains(ml.ModuleId) ? lr4Recorder : lr2Recorder,
                     SessionEventName = pl.PageDisplayName,
                     SessionDate = fl.FolderDateTimeStart,
                     SessionStartDateTime = new DateTime(
@@ -103,12 +118,15 @@ namespace LET.Panopto.Scheduler.Scheduling
                          {
                              EventCourseName = group.Select(g => g.SessionCourseName).FirstOrDefault(),
                              EventCourseId = group.Select(g => g.CourseId).FirstOrDefault().ToString(),
+                             ClassYear = group.Select(g => g.ClassYear).FirstOrDefault(),
                              EventRecordDate = group.Select(g => g.SessionDate).FirstOrDefault(),
                              EventName = String.Join("; ", group.Select(g => g.SessionEventName).ToArray()),
-                             EventPlayDuration = group.Select(g => g.SessionStartDateTime.Value.TimeOfDay).First() + " - " + group.Select(g => g.SessionEndDateTime.Value.TimeOfDay).Last(),
+                             EventPlayDuration = group.Select(g => g.SessionStartDateTime.Value.AddMinutes(-5).TimeOfDay).First() 
+                             + " - " + group.Select(g => g.SessionEndDateTime.Value.AddMinutes(15).TimeOfDay).Last(),
                              SessionStartDateTime = group.Select(g => g.SessionStartDateTime).First(),
                              SessionEndDateTime = group.Select(g => g.SessionEndDateTime).Last(),
-                             EventCatalogId = group.Select(g => g.CatalogId).FirstOrDefault()
+                             EventCatalogId = group.Select(g => g.CatalogId).FirstOrDefault(),
+                             EventRecorderId = group.Select(g => g.RecorderId).FirstOrDefault()
                          })
                          .ToList();
 

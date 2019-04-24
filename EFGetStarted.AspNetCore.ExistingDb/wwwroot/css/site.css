@@ -55,3 +55,8 @@ body {
 .mainMenu {
     padding-top: 15px;
 }
+
+ table {
+    width: 100%;
+    table-layout: fixed;
+}

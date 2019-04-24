@@ -9,6 +9,7 @@ namespace LET.Panopto.Scheduler.Models
     {
         public int Id { get; set; }
         public int CourseId { get; set; }
+        public int ClassYear { get; set; }
         public string SessionCourseName { get; set; }
         public string SessionEventName { get; set; }
         public DateTime? SessionDate { get; set; }
@@ -16,5 +17,7 @@ namespace LET.Panopto.Scheduler.Models
         public DateTime? SessionEndDateTime { get; set; }
         public string SessionDuration { get; set; }
         public Guid CatalogId { get; set; }
+        public Guid RecorderId { get; set; }
+
     }
 }
