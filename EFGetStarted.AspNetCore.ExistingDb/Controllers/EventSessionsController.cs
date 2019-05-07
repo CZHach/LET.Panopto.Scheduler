@@ -9,6 +9,7 @@ using LET.Panopto.Scheduler.Models;
 using LET.Panopto.Scheduler.Utilities;
 using LET.Panopto.Scheduler.Scheduling;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LET.Panopto.Scheduler.Controllers
 {
@@ -25,10 +26,10 @@ namespace LET.Panopto.Scheduler.Controllers
             sg = new ScheduleGenerator(context);
         }
 
-        public async Task<IActionResult> Index(DateTime? start, DateTime? end)
+        public async Task<IActionResult> Index()
         {
-            start = DatetimeGenerator.GetWeekStart();
-            end = DatetimeGenerator.GetWeekEnd();
+            DateTime? start = DatetimeGenerator.GetWeekStart();
+            DateTime? end = DatetimeGenerator.GetWeekEnd();
 
             List<GroupedEvents> playersGroupList = await sg.GenerateWeeklySchedule(start, end);
             ViewData["RangeStart"] = start;
@@ -39,6 +40,12 @@ namespace LET.Panopto.Scheduler.Controllers
         [HttpPost]
         public async Task<IActionResult> SearchByDate(DateTime? start, DateTime? end)
         {
+           if (start == null || end == null)
+            {
+                start = DatetimeGenerator.GetWeekStart();
+                end = DatetimeGenerator.GetWeekEnd();
+            }
+
             List<GroupedEvents> playersGroupList = await sg.GenerateWeeklySchedule(start, end);
             ViewData["RangeStart"] = start;
             ViewData["RangeEnd"] = end;

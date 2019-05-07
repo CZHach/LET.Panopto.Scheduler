@@ -13,6 +13,7 @@ using LET.Panopto.Scheduler.Models;
 using Microsoft.EntityFrameworkCore;
 using LET.Panopto.Scheduler.Scheduling;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Server.IISIntegration;
 
 namespace LET.Panopto.Scheduler
 {
@@ -42,6 +43,8 @@ namespace LET.Panopto.Scheduler
             services.AddScoped<IScheduleCreationInitiator, ScheduleCreationInitiator>();
             services.AddScoped<IConflictGenerator, ConflictGenerator>();
             services.AddScoped<ISessionGenerator, SessionGenerator>();
+
+            services.AddAuthentication(IISDefaults.AuthenticationScheme);
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -75,7 +78,7 @@ namespace LET.Panopto.Scheduler
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
