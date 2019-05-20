@@ -62,5 +62,35 @@ namespace LET.Panopto.Scheduler.Controllers
 
             return View(recordingResults);
         }
+
+        [HttpPost]
+        public async Task<JsonResult> PostScheduleBlock(DateTime start, DateTime end)
+        {
+            List<GroupedEvents> groupedEventsList = await ScheduleGenerator.GenerateWeeklySchedule(start, end);
+
+            List<bool> conflictsList = new List<bool>();
+            List<ScheduleBlockResult> recordingResults = new List<ScheduleBlockResult>();
+
+            foreach (var recordedSession in SessionGenerator.GenerateSession(groupedEventsList))
+            {
+                ScheduledRecordingResult result = await ScheduleCreationInitiator.ScheduleRecordings(recordedSession);
+                conflictsList.Add(result.ConflictsExist);
+                recordingResults = ConflictGenerator.GenerateConflicts(result);
+            }
+
+            if (conflictsList.All(x => x == true))
+            {
+                return Json(recordingResults);
+            }
+
+            recordingResults.Add(
+                new ScheduleBlockResult
+                {
+                    ConflictExists = false,
+                    SessionMessage = "Sessions scheduled successfully"
+                });
+
+            return Json(recordingResults);
+        }
     }
 }

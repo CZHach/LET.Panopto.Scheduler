@@ -34,7 +34,22 @@ namespace LET.Panopto.Scheduler.Controllers
             List<GroupedEvents> playersGroupList = await sg.GenerateWeeklySchedule(start, end);
             ViewData["RangeStart"] = start;
             ViewData["RangeEnd"] = end;
+
             return View(playersGroupList);
+        }
+
+        //[Authorize(Roles = "PITT\\LET Admins")]
+        public async Task<JsonResult> GetEventsByDate(DateTime? start, DateTime? end)
+        {
+            if (start == null || end == null)
+            {
+                start = DatetimeGenerator.GetWeekStart();
+                end = DatetimeGenerator.GetWeekEnd();
+            }
+
+            List<GroupedEvents> playersGroupList = await sg.GenerateWeeklySchedule(start, end);
+
+            return Json(playersGroupList);
         }
 
         [HttpPost]

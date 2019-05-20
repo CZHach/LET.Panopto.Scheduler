@@ -631,7 +631,7 @@ namespace RemoteRecorderManagement
         public RemoteRecorderManagementClient() : 
                 base(RemoteRecorderManagementClient.GetDefaultBinding(), RemoteRecorderManagementClient.GetDefaultEndpointAddress())
         {
-            this.Endpoint.Name = EndpointConfiguration.BasicHttpBinding_IRemoteRecorderManagement.ToString();
+            this.Endpoint.Name = EndpointConfiguration.BasicHttpsBinding_IRemoteRecorderManagement.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
@@ -723,7 +723,7 @@ namespace RemoteRecorderManagement
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IRemoteRecorderManagement))
+            if ((endpointConfiguration == EndpointConfiguration.BasicHttpsBinding_IRemoteRecorderManagement))
             {
                 System.ServiceModel.BasicHttpsBinding result = new System.ServiceModel.BasicHttpsBinding();
                 result.MaxBufferSize = int.MaxValue;
@@ -737,7 +737,7 @@ namespace RemoteRecorderManagement
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IRemoteRecorderManagement))
+            if ((endpointConfiguration == EndpointConfiguration.BasicHttpsBinding_IRemoteRecorderManagement))
             {
                 return new System.ServiceModel.EndpointAddress("https://pitt.hosted.panopto.com/Panopto/PublicAPI/4.2/RemoteRecorderManagement.svc" +
                         "");
@@ -747,18 +747,18 @@ namespace RemoteRecorderManagement
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding()
         {
-            return RemoteRecorderManagementClient.GetBindingForEndpoint(EndpointConfiguration.BasicHttpBinding_IRemoteRecorderManagement);
+            return RemoteRecorderManagementClient.GetBindingForEndpoint(EndpointConfiguration.BasicHttpsBinding_IRemoteRecorderManagement);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress()
         {
-            return RemoteRecorderManagementClient.GetEndpointAddress(EndpointConfiguration.BasicHttpBinding_IRemoteRecorderManagement);
+            return RemoteRecorderManagementClient.GetEndpointAddress(EndpointConfiguration.BasicHttpsBinding_IRemoteRecorderManagement);
         }
         
         public enum EndpointConfiguration
         {
             
-            BasicHttpBinding_IRemoteRecorderManagement,
+            BasicHttpsBinding_IRemoteRecorderManagement,
         }
     }
 }

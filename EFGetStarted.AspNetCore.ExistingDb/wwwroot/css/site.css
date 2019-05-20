@@ -3,20 +3,61 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: lightgray;
+    background-image: url('images/1.jpeg');
+
 }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
+    padding-top: 20px;
     padding-left: 15px;
     padding-right: 15px;
+    background-color: rgba(255,255,255,0.6);
+    background-blend-mode: lighten;
+    border: 1px solid #333;
 }
 
-/* Carousel */
+.imgIcon {
+    padding: 2px 0px 2px 20px;
+    float: left;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-brand {
+    font-size: 36px;
+    color: #eee;
+    padding-left: 0;
+}
+.navbar-inverse {
+    background-color: #264d73;
+}
+
+.navbar-inverse  {
+    color: #eee;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #ddd;
+}
+        /* Carousel */
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
+}
+
+hr {
+    border-top: 1px solid #777;
+    margin: 0px;
+}
+
+table td {
+    border-top: 1px solid #555;
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
@@ -54,9 +95,21 @@ body {
 
 .mainMenu {
     padding-top: 15px;
+    padding-left: 20px;
+    font-size: 24px;
 }
 
  table {
     width: 100%;
     table-layout: fixed;
+}
+
+ .container {
+     padding-left: 0;
+ }
+
+.footer {
+    text-align: center;
+    background-blend-mode: darken;
+    background-color: rgba(255,255,255,0.1);
 }

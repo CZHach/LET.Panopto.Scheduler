@@ -5,11 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div style="padding-top: 10px; padding-bottom: 20px;">
-    <span style="font-size: 26px;">| Weekly Events |  </span> <span style="font-size: 16px">@ViewData["RangeStart"] - @ViewData["RangeEnd"]</span>
+<div style="padding-top: 10px; padding-bottom: 20px; padding-left: 10px;">
+    <span style="font-size: 26px;">Weekly Events</span> <span style="font-size: 16px">@ViewData["RangeStart"] - @ViewData["RangeEnd"]</span>
 </div>
 
-<form asp-controller="EventSessions" asp-action="SearchByDate" method="post">
+<form asp-controller="EventSessions" asp-action="SearchByDate" method="post" style="padding-top: 10px; padding-bottom: 20px; padding-left: 10px;">
     <fieldset>
         <div class="datePickers" style="display: block; float: left;">
             <div class="startDate" style="float: left;">

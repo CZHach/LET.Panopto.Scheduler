@@ -6,8 +6,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div style="padding-top: 10px; padding-bottom: 20px;">
-    <span style="font-size: 26px;">| Weekly Events |  </span> <span style="font-size: 16px">@ViewData["RangeStart"] - @ViewData["RangeEnd"]</span>
+<div style="padding-top: 10px; padding-bottom: 20px; padding-left: 10px;">
+    <span style="font-size: 26px;">Weekly Events</span> <span style="font-size: 16px">@ViewData["RangeStart"] - @ViewData["RangeEnd"]</span>
 </div>
 
 <table class="table eventRow">
@@ -61,7 +61,7 @@
 </table>
 
 
-<form asp-controller="Scheduling" asp-action="ScheduleBlock" method="post">
+<form asp-controller="Scheduling" asp-action="ScheduleBlock" method="post"   style="padding-top: 10px; padding-bottom: 20px; padding-left: 10px;">
     <fieldset>
         <input type="hidden" name="start" asp-for="@ViewData["RangeStart"]" />
         <input type="hidden" name="end" asp-for="@ViewData["RangeEnd"]" />
