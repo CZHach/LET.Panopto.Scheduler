@@ -11,31 +11,31 @@ namespace LET.Panopto.Scheduler.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize(Roles = "PITT\\LET Admins")]
+        //Roles = "PITT\\LET Admins")]
         public IActionResult Index()
         {
             return View();
         }
-        [Authorize(Roles = "PITT\\LET Admins")]
+        //[Authorize(Roles = "PITT\\LET Admins")]
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
 
             return View();
         }
-        [Authorize(Roles = "PITT\\LET Admins")]
+        //[Authorize(Roles = "PITT\\LET Admins")]
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
 
             return View();
         }
-        [Authorize(Roles = "PITT\\LET Admins")]
+        //[Authorize(Roles = "PITT\\LET Admins")]
         public IActionResult Privacy()
         {
             return View();
         }
-        [Authorize(Roles = "PITT\\LET Admins")]
+        //[Authorize(Roles = "PITT\\LET Admins")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

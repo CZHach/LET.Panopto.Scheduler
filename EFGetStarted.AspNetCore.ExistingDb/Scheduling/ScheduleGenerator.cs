@@ -24,9 +24,17 @@ namespace LET.Panopto.Scheduler.Scheduling
 
         public async Task<List<GroupedEvents>>  GenerateWeeklySchedule(DateTime? start, DateTime? end)
         {
-
+            int startSchoolYearMonth = DateTime.Now.Month;
             int firstYearClass = DateTime.Now.Year + 3;
             int secondYearClass = DateTime.Now.Year + 2;
+
+            // new school year starts in August, this checks to see if it's a new school year
+            // if the month is greater than July then it will apply this logic
+            
+            if (startSchoolYearMonth > 7) {
+                firstYearClass = DateTime.Now.Year + 4;
+                secondYearClass = DateTime.Now.Year + 3;
+            }
 
             Guid lr4Recorder = new Guid("85e1632d-0b6f-497f-b455-a96501368ed1");
             Guid lr2Recorder = new Guid("95cb51ed-a8f5-45ff-925a-a8ef00fa4356");
@@ -71,7 +79,7 @@ namespace LET.Panopto.Scheduler.Scheduling
                     Id = pl.PageId,
                     CourseId = ml.ModuleId,
                     SessionCourseName = ml.ModuleDisplayName,
-                    ClassYear = firstYears.Contains(ml.ModuleId) ? 2022 : 2021,
+                    ClassYear = firstYears.Contains(ml.ModuleId) ? firstYearClass : secondYearClass,
                     RecorderId = firstYears.Contains(ml.ModuleId) ? lr4Recorder : lr2Recorder,
                     SessionEventName = pl.PageDisplayName,
                     SessionDate = fl.FolderDateTimeStart,

@@ -49,6 +49,8 @@ namespace LET.Panopto.Scheduler.Scheduling
                 schedulingEvent.SessionEnd.ToUniversalTime(),
                 recorderSettings.ToArray()
                 );
+            var r = scheduleResult;
+
             return scheduleResult;           
         }
     }
