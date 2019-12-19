@@ -41,6 +41,7 @@ namespace LET.Panopto.Scheduler.Scheduling
 
             // need to ensure that the sessionName is not greater than 240 characters (API limit)
             schedulingEvent.SessionName = schedulingEvent.SessionName.Length > 240 ? schedulingEvent.SessionName.Substring(0, 240) : schedulingEvent.SessionName;
+            
             scheduleResult = await recorderClient.ScheduleRecordingAsync(
                 recorderManagementAuth,
                 schedulingEvent.SessionName,
