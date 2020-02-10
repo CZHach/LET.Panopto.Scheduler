@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using LET.Panopto.Scheduler.Models;
@@ -14,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using LET.Panopto.Scheduler.Scheduling;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Server.IISIntegration;
+using Microsoft.Extensions.Hosting;
 
 namespace LET.Panopto.Scheduler
 {
@@ -54,18 +54,24 @@ namespace LET.Panopto.Scheduler
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             var connection = @"Server=136.142.96.135;Database=Navigator;ConnectRetryCount=0;User Id=NavReadWrite;Password=l%]k.5Ev85u";
-            services.AddDbContext<NavEventsContext>(options => options.UseSqlServer(connection));
+
+            services.AddDbContext<NavEventsContext>(opts =>
+                opts.UseSqlServer(connection));
+
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+
             }
             else
             {
@@ -73,17 +79,18 @@ namespace LET.Panopto.Scheduler
                 app.UseHsts();
             }
             app.UseDeveloperExceptionPage();
-            app.UseDatabaseErrorPage();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
-            app.UseMvc(routes =>
+            app.UseRouting();
+            
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    "default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

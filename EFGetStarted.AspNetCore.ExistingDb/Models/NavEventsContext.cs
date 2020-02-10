@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using LET.Panopto.Scheduler.Models;
+using Microsoft.EntityFrameworkCore.SqlServer;
+
 
 namespace LET.Panopto.Scheduler.Models
 {
