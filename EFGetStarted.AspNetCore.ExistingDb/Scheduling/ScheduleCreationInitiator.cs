@@ -32,14 +32,16 @@ namespace LET.Panopto.Scheduler.Scheduling
             Guid remoteRecorderId = Guid.Parse("b996f247-377d-46ed-8410-aa170135aea1");
 
             // test folder
-            Guid panoptoFolderId = Guid.Parse("1e957dca-3fe1-4214-b251-a96e0106997a");
+            Guid panoptoFolderId = Guid.Parse("0ef16efd-41d1-4811-92e8-a8ef013b50ac");
 
             List<RecorderSettings> recorderSettings = new List<RecorderSettings>
             {
                 new RecorderSettings { RecorderId = schedulingEvent.SessionRecorderId }
             };
 
-            // auth, sesson.Name, session.FolderId, session.IsBroadcast, session.start, session.end, recorderSettings // 
+            // need to ensure that the sessionName is not greater than 240 characters (API limit)
+            schedulingEvent.SessionName = schedulingEvent.SessionName.Length > 240 ? schedulingEvent.SessionName.Substring(0, 240) : schedulingEvent.SessionName;
+            
             scheduleResult = await recorderClient.ScheduleRecordingAsync(
                 recorderManagementAuth,
                 schedulingEvent.SessionName,

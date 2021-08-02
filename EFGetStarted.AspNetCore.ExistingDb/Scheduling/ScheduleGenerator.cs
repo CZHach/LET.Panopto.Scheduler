@@ -43,8 +43,7 @@ namespace LET.Panopto.Scheduler.Scheduling
             var eventCourses = await _context.ModuleList
                          .Where(m => m.MediasiteCatalogId != null
                                  && m.PublishingStatus == 1
-                                 && m.AcademicYear > DateTime.Now.Year - 2
-                                 && !m.IsPlaceholder).ToListAsync();
+                                 && m.AcademicYear > DateTime.Now.Year - 2).ToListAsync();
 
             var eventPages = await _context.PageList
                 .Where(p => p.PageTypeId == 668
